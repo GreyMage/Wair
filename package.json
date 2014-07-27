@@ -1,0 +1,24 @@
+{
+  "name": "Wair",
+  "version": "0.1.0",
+  "description": "Group-aware Location Sharing",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://GreyMage@github.com/GreyMage/Wair.git"
+  },
+  "author": "Cades",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GreyMage/Wair/issues"
+  },
+  "homepage": "https://github.com/GreyMage/Wair",
+  "dependencies": {
+    "nedb": "^0.10.7",
+    "socket.io": "^0.9.17"
+  }
+}
