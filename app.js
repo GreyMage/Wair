@@ -36,6 +36,7 @@ Wair.f.tryLogin = function(socket,data){
 	}
 
 	Wair.userdb.find(select, function(err,docs){
+		console.log(docs);
 		if(docs.length == 1){
 			data.username = docs[0].username; // jic
 			Wair.f.forceLogin(socket,data);
@@ -59,7 +60,7 @@ Wair.f.leaveChannel = function(socket,data){
 		if(channels.indexOf(channelid) != -1){
 			channels.splice(channels.indexOf(channelid),1);
 		}
-		wair.userdb.update({_id:id}, {$set: { channels: channels } }, {}, function(err,newDocs){
+		Wair.userdb.update({_id:id}, {$set: { channels: channels } }, {}, function(err,newDocs){
 			if(err)console.log(err);
 			socket.emit('leaveChannel',{
 				success:true,
@@ -87,7 +88,7 @@ Wair.f.forceChannel = function(socket,data,channel){
 		channels.push(channel._id);
 		socket.set('channels',channels);
 
-		wair.userdb.update({_id:id}, {$set: { channels: channels } }, {}, function(err,newDocs){
+		Wair.userdb.update({_id:id}, {$set: { channels: channels } }, {}, function(err,newDocs){
 			if(err)console.log(err);
 			socket.emit('joinChannel',{
 				success:true,
@@ -284,11 +285,11 @@ Wair.f.register = function(socket,data){
 
 	// Check for dupes.
 	Wair.userdb.find({username:username},function(err, docs){
-		if(docs.legnth > 0){
+		if(docs.length > 0){
 			errors.push("A duplicate username Exists!");
 		}
 		
-		if(errors.legnth > 0){
+		if(errors.length > 0){
 			socket.emit('register',{
 				success:false,
 				message:"There were errors",
