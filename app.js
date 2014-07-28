@@ -6,7 +6,7 @@ var Wair = {};
 
 // Settings
 Wair.c = {} // Config
-Wair.c.mexLocationAge = 1000 * 60 * 30;
+Wair.c.maxLocationAge = 1000 * 60 * 30;
 Wair.c.locationJanitorInterval = 1000 * 60;
 
 // Database
